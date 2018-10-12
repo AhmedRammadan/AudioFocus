@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case AudioManager.AUDIOFOCUS_LOSS:
                     media.stop();
+                    media.release();
                     break;
                 case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT:
                     media.pause();
@@ -51,5 +52,6 @@ public class MainActivity extends AppCompatActivity {
     public void pause(View view) {
         media.pause();
         maudioManager.abandonAudioFocus(audioFocusChangeListener);
+        media.release();
     }
 }
